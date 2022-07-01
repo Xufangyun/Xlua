@@ -1,0 +1,20 @@
+local UnityEngine=CS.UnityEngine
+xlua.hotfix(CS.Cube,'Update',function(self)
+	if(UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.S)) then
+		self.rigidbody:AddForce(UnityEngine.Vector3.up*100)
+	end
+end)
+
+xlua.hotfix(CS.Load,'Start',function(self)
+
+self.hot:LoadResource('Sphere','gameobject\\sphere.ab')
+
+end)
+
+xlua.hotfix(CS.Load,'Update',function(self)
+
+    if(UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.L)) then
+		UnityEngine.Object.Instantiate(self.hot:GetPrefabs('Sphere'))
+	end
+
+end)
